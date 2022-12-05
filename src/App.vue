@@ -2,8 +2,8 @@
 <template>
   <div>
     <header class="header">
-      <h1 class="header-title">MeiliSearch + Vue 3 InstantSearch</h1>
-      <p class="header-subtitle">Search in Yuyushiki serifs</p>
+      <h1 class="header-title">yuyusearch</h1>
+      <p class="header-subtitle">Meilisearch + Vue 3 InstantSearch</p>
     </header>
     <ul class="description">
       <li class="disclaimer">
@@ -24,7 +24,7 @@
         <br/>（「ねこ」で「猫、ネコ、ねこ」を含む結果を返す）
       </li>
       <li class="disclaimer">
-        日本語のインデックス作成はmeilisearch v0.28のほぼデフォルトなので適切でない検索結果が含まれる場合があります
+        日本語のインデックス作成はMeilisearch v0.28のほぼデフォルトなので適切でない検索結果が含まれる場合があります
       </li>
     </ul>
     <div class="container">
@@ -82,7 +82,7 @@
     </div>
     <div class="footer">
       <hr/>
-      連絡先：@esuji or esuji5@gmail.com 
+      contact: <a href="https://twitter.com/esuji">@esuji</a> or esuji5@gmail.com
     </div>
   </div>
 </template>
@@ -146,14 +146,11 @@ export default {
         for (let url of posterUrls){
           let img_element = document.createElement('img');
           img_element.src = url; // 画像パス
-          // img_element.width = 20; // 横サイズ（px）
           let li_element = document.createElement('li');
           li_element.style = 'list-style: none;'
           li_element.appendChild(img_element)
           li_element.classList.add('copied-panel')
           document.getElementById('copied-panels').appendChild(li_element)
-          // img_element.style = 'float:left'
-          // img_element.height = 200; // 縦サイズ（px）
         }
 
       } else {
@@ -205,7 +202,6 @@ body {
 
 .expand-button{
   float: right;
-  /* margin-left: 1rem; */
 }
 
 .disclaimer {
@@ -224,15 +220,20 @@ body {
   display: flex;
   align-items: center;
   min-height: 50px;
-  padding: 0.5rem 1rem;
-  background-image: linear-gradient(to right, #4dba87, #2f9088);
+  padding: 0.2rem 1rem;
+  background-image: linear-gradient(to right, #ec94e9, #9935a4);
   color: #fff;
   margin-bottom: 1rem;
 }
 
 .header-title {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: normal;
+}
+
+.header-title::after {
+  content: " ▸ ";
+  padding: 0 0.5rem;
 }
 
 .hit-description {
@@ -241,13 +242,10 @@ body {
   color: grey;
 }
 
-.header-title::after {
-  content: " ▸ ";
-  padding: 0 0.5rem;
-}
-
 .header-subtitle {
-  font-size: 1.2rem;
+  font-size: 0.9rem;
+  padding-top: 0.4rem;
+
 }
 
 .container {
@@ -1086,7 +1084,9 @@ a[class^='ais-'] {
   /* overflow: hidden; */
   margin: 0;
 }
+
 @media only screen and (min-width: 768px), print {
+
   .search-panel__filters {
     float: left;
     width: 120px;
@@ -1113,6 +1113,14 @@ a[class^='ais-'] {
 }
 
 @media only screen and (max-width: 767px) {
+  .header-title {
+    font-size: 1.2rem;
+  }
+
+  .header-subtitle {
+    font-size: 0.8rem;
+  }
+
   .search-panel__filters {
     float: left;
     max-width: 120px;
