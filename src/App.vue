@@ -1105,36 +1105,45 @@ a[class^='ais-'] {
   #copied-panels {
     float: left;
     width: 200px;
+    margin-left: 1.5rem;
   }
   .copied-panel > img {
     width: 100%;
   }
 @media only screen and (max-width: 1100px) {
  /*タブレット用の記述 */
+
+ .search-panel__filters {
+    float: left;
+    width: 80px;
+  }
  .search-panel__results {
     float: left;
-    width: 600px;
+    width: 450px;
   }
 
   .ais-Hits-item {
-    margin-bottom: 1em;
+    margin-bottom: 0.6rem;
     width: calc(50% - 1rem);
     padding: 0.3rem;
+  }
+  #copied-panels {
+    float: left;
+    width: 200px;
+    margin-left: 1rem;
   }
 }
 @media only screen and (max-width: 450px) {
   .header-title {
     font-size: 1.2rem;
   }
-
   .header-subtitle {
     font-size: 0.8rem;
   }
-
   .search-panel__filters {
     float: left;
     max-width: 120px;
-    width: 90px;
+    width: 80px;
   }
   .ais-SearchBox-input{
     max-height: 2rem;
@@ -1142,14 +1151,9 @@ a[class^='ais-'] {
     width: 100%;
   }
   .search-panel__results {
-    width: 80%;
-    /* height: 600px; */
+    width: 60%;
     margin-left: auto;
-    /* margin-right: auto; */
-    /* background-color: #ddd; */
-    /* margin-right: 120px; */
   }
-
   .ais-Hits-item {
     margin-bottom: 0rem;
     width: 100%;
