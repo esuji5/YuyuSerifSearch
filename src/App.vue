@@ -24,7 +24,7 @@
         <br/>（「ねこ」で「猫、ネコ、ねこ」を含む結果を返す）
       </li>
       <li class="disclaimer">
-        日本語のインデックス作成はMeilisearch v0.28のほぼデフォルトなので適切でない検索結果が含まれる場合があります
+        日本語のインデックス作成はMeilisearch v0.30のほぼデフォルトなので適切でない検索結果が含まれる場合があります
       </li>
     </ul>
     <div class="container">
@@ -1085,7 +1085,6 @@ a[class^='ais-'] {
   margin: 0;
 }
 
-@media only screen and (min-width: 768px), print {
 
   .search-panel__filters {
     float: left;
@@ -1110,9 +1109,20 @@ a[class^='ais-'] {
   .copied-panel > img {
     width: 100%;
   }
-}
+@media only screen and (max-width: 1100px) {
+ /*タブレット用の記述 */
+ .search-panel__results {
+    float: left;
+    width: 600px;
+  }
 
-@media only screen and (max-width: 767px) {
+  .ais-Hits-item {
+    margin-bottom: 1em;
+    width: calc(50% - 1rem);
+    padding: 0.3rem;
+  }
+}
+@media only screen and (max-width: 450px) {
   .header-title {
     font-size: 1.2rem;
   }
