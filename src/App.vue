@@ -111,8 +111,8 @@ export default {
       ),
       // クエリ結果をURLとして残したい場合はコメントアウト
       // routing: {
-        // router: history(),
-        // stateMapping: simple(),
+      //   router: history(),
+      //   stateMapping: simple(),
       // },
       initialUiState: {
         yuyu_serif: {
@@ -168,11 +168,13 @@ export default {
     }
   },
   mounted() {
-    const initialQueries = ['パン人間', 'パン人間', 'ぴざつくらんのかい',
-                            'セプテンバー', 'セプテンバー', 'お金', 'アホ',
-                            '映画', '宇宙', 'バナナ', 'いぬ', 'ねこ', '佳',
-                            'オンブズマン', 'カレー', 'くじら', 'かしこ',
-                          ]
+    const initialQueries = [
+      'パン人間', 'パン人間', 'ぴざつくらんのかい',
+      'セプテンバー', 'セプテンバー', 'お金', 'アホ',
+      '映画', '宇宙', 'バナナ', 'いぬ', 'ねこ', '佳',
+      'オンブズマン', 'カレー', 'くじら', 'かしこ',
+      'ふみ', '穴', '今日のテーマ', '今日のテーマ',
+    ]
     const randomInitialQuery = initialQueries[Math.floor(Math.random() * initialQueries.length)]
     const searchInput = document.querySelector('input[type=search]')
     this.initialUiState.yuyu_serif.query= randomInitialQuery
@@ -1093,8 +1095,6 @@ a[class^='ais-'] {
   .search-panel__results {
     float: left;
     width: 800px;
-    /* height: 800px; */
-    /* margin-left: 120px; */
   }
 
   .ais-Hits-item {
@@ -1112,7 +1112,6 @@ a[class^='ais-'] {
   }
 @media only screen and (max-width: 1100px) {
  /*タブレット用の記述 */
-
  .search-panel__filters {
     float: left;
     width: 80px;
