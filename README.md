@@ -1,6 +1,8 @@
 # yuyusearch
 - 4コマ漫画のセリフを検索して結果の画像などを表示するためのアプリです。
 - フロント側にVue.js 3、検索エンジンにMeilisearchを利用することを想定しています。
+  - Meilisearch公式のツールをベースに開発
+  - https://github.com/meilisearch/meilisearch-vue
 - その他、検索用のセリフデータ、表示用のコマ画像データなどが必要です
     - そちらのデータ作成はhttps://github.com/esuji5/yonkoma2data を参考できるかもしれません
 - 以下、ローカル環境で動かす想定で記述します
