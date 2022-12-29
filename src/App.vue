@@ -53,15 +53,17 @@
               <div :key="item.koma_id">
                 <div class="hit-name">
                   <ais-highlight :hit="item" attribute="koma_id" />
-                  <button v-if="displayKomaImage" class='expand-button' @click="expand4koma(item.poster)">Expand</button>
+                  <button v-if="displayKomaImage" class='expand-button' @click="expand4koma(item.koma_image_url)">Expand</button>
                 </div>
                 <div v-if="displayKomaImage">
-                  <img  @click="selectPanel" :src="item.poster" align="left" :alt="item.poster" />
+                  <img  @click="selectPanel" :src="item.koma_image_url" align="left" :alt="item.koma_image_url" />
                   <div class="hit-description">
                     <ais-snippet :hit="item" attribute="description" />
                   </div>
                   <div class="hit-info">kanji: {{ item.kanji }}</div>
                   <div class="hit-info">セリフ: {{ item.serif_chara }}</div>
+                  <div class="hit-info"> {{ item.serif }}</div>
+                  <div class="hit-info"> {{ item.hiragana }}</div>
                 </div>
               </div>
             </template>
@@ -130,20 +132,17 @@ export default {
       document.getElementById('copied-panels').appendChild(copiedPanel)
     },
     clearPanels(){
-      // なんか一回で消えない
-      for( let i = 0 ; i < this.copiedPanels.length ; i ++ ) {
-        this.copiedPanels[i].remove()
-      }
-      for( let i = 0 ; i < this.copiedPanels.length ; i ++ ) {
-        this.copiedPanels[i].remove()
+      const copiedPanelsLength = this.copiedPanels.length
+      for( let i = 0 ; i < copiedPanelsLength ; i ++ ) {
+        this.copiedPanels[0].remove()
       }
     },
-    expand4koma(posterUrl){
-      const posterUrlTemplate = posterUrl.split('.jpg')[0]
-      const koma_id_last = Number(posterUrlTemplate.substr(-1))
+    expand4koma(komaImageUrl){
+      const komaImageUrlTemplate = komaImageUrl.split('.jpg')[0]
+      const koma_id_last = Number(komaImageUrlTemplate.substr(-1))
       if (1 <= koma_id_last && 4 >= koma_id_last){
-        const posterUrls = [1,2,3,4].map(idx=>posterUrlTemplate.substr(0,posterUrlTemplate.length-1)+String(idx)+'.jpg')
-        for (let url of posterUrls){
+        const komaImageUrls = [1,2,3,4].map(idx=>komaImageUrlTemplate.substr(0,komaImageUrlTemplate.length-1)+String(idx)+'.jpg')
+        for (let url of komaImageUrls){
           let img_element = document.createElement('img');
           img_element.src = url; // 画像パス
           let li_element = document.createElement('li');
@@ -154,8 +153,8 @@ export default {
         }
 
       } else {
-        const posterUrls = [5,6,7,8].map(idx=>posterUrlTemplate.substr(0,posterUrlTemplate.length-1)+String(idx)+'.jpg')
-        for (let url of posterUrls){
+        const komaImageUrls = [5,6,7,8].map(idx=>komaImageUrlTemplate.substr(0,komaImageUrlTemplate.length-1)+String(idx)+'.jpg')
+        for (let url of komaImageUrls){
           let img_element = document.createElement('img');
           img_element.src = url; // 画像パス
           let li_element = document.createElement('li');
@@ -170,10 +169,10 @@ export default {
   mounted() {
     const initialQueries = [
       'パン人間', 'パン人間', 'ぴざつくらんのかい',
-      'セプテンバー', 'セプテンバー', 'お金', 'アホ',
-      '映画', '宇宙', 'バナナ', 'いぬ', 'ねこ', '佳',
-      'オンブズマン', 'カレー', 'くじら', 'かしこ',
-      'ふみ', '穴', '今日のテーマ', '今日のテーマ',
+      'セプテンバー', 'セプテンバー', 'お金', 'アホ', 'ピーマン',
+      '映画', '宇宙', 'バナナ', 'いぬ', 'ねこ', '佳', '兀',
+      'オンブズマン', 'カレー', 'くじら', 'かしこ', 'カニ',
+      'ふみ', '穴', '今日のテーマ', 'あいかわ',
     ]
     const randomInitialQuery = initialQueries[Math.floor(Math.random() * initialQueries.length)]
     const searchInput = document.querySelector('input[type=search]')
@@ -1087,7 +1086,10 @@ a[class^='ais-'] {
   margin: 0;
 }
 
+.ais-SearchBox-input{
+  margin-bottom: 1rem;
 
+}
   .search-panel__filters {
     float: left;
     width: 120px;
