@@ -15,8 +15,8 @@ VUE_APP_DISPLAY_KOMA_IMAGE = 1
 ```
 
 # Meilisearch
-localhost:7700でMeilisearchが動いている想定
-`meilisearch  --master-key="your-master-key"`
+- localhost:7700でMeilisearchが動いている想定
+- `meilisearch  --master-key="your-master-key"`
 
 その後、インデックス名`yuyu-serif`に以下のようなデータを入れています。（例：三上小又著『ゆゆ式』1巻10ページ1コマ目）
 
