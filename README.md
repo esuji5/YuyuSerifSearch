@@ -30,6 +30,28 @@ VUE_APP_DISPLAY_KOMA_IMAGE = 1
 - hiragana:  きょうのたいいくつかれたーもうかえっていーかなー?
 - koma_image_url: https://bucket-name.s3.ap-northeast-1.amazonaws.com/yuyushiki01/1-010-1.jpg
 
+その後、SDKでインデックスの設定を行います（例はPython SDK)
+```python
+client.index('yuyu_serif').update_settings({
+    'searchableAttributes': [
+      'serif',
+      'hiragana',
+    ],
+    'displayedAttributes': [
+      'koma_id',
+      'serif',
+      'serif_chara',
+      'kanji',
+      'img_path',
+      'hiragana',
+      'koma_image_url',
+    ],'filterableAttributes':[
+      'serif',
+      'kanji',
+      'serif_chara',
+    ],
+})
+```
 お手持ちのデータに合わせて適宜変更してください。
 
 # serve, build
